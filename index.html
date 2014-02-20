@@ -25,14 +25,16 @@
 
 	<script>
 
+	(function scroll (){
+
 		var words = ["fun", "exciting", "about not giving up", "being helpful", "being open", "what I learned at CodingDojo!"],
 			el = document.getElementById('magic'),
 			word_counter = 0,
 			character_counter = 0;
 
+
 		function updateText()
 		{
-			el.innerHTML = el.innerHTML+words[word_counter][character_counter++];
 
 			if(character_counter == words[word_counter].length)
 			{
@@ -44,9 +46,16 @@
 				if(word_counter == words.length)
 					word_counter = 0;
 			}
+
+			words[word_counter] = words[word_counter].replace(/ /g,"\u00a0");
+
+			el.innerHTML = el.innerHTML+words[word_counter][character_counter++];
+			console.log(el.innerHTML);
 		}
 
 		setInterval(updateText,300);
+	
+	})();
 
 	</script>
 
